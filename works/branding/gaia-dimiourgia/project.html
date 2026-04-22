@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Vibes | Akshay Kumbola</title>
+    
+    <meta name="theme-color" content="#111111">
+    
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../style.css">
+
+    <style>
+        :root {
+            --project-title-color: #1e1c1cd1;
+            --project-category-color: rgba(86, 86, 86, 0.6);
+            --project-description-color: #242222;
+        }
+        
+        .project-title { color: var(--project-title-color) !important; }
+        .project-category { color: var(--project-category-color) !important; }
+        .project-description { color: var(--project-description-color) !important; }
+    </style>
+
+</head>
+
+<body class="project-page project-snap" style="background-image: url('bg.jpg');">
+
+    <nav class="project-nav">
+        <a href="../../../index.html" class="back-btn" aria-label="Go Back">
+            <span class="arrow">&larr;</span>
+        </a>
+    </nav>
+
+    <main>
+        
+        <header class="project-header snap-section">
+            <div class="header-content">
+                <p class="project-category">Branding</p>
+                <h1 class="project-title">Gaia Dimiourgia</h1>
+                <p class="project-description">
+                    Gaia Dimiourgia, meaning "Mother Earth Creation" is a luxury lifestyle brand that focuses on multidisciplinary design and products, they wanted a logo that refelects the luxury lifestyle and going with their multidisciplinary approach.<br>
+                    Brand by: Samriddhi Mukherjee<br>
+                    Logo and identity by: Akshay Kumbola
+                </p>
+            </div>
+        </header>
+
+        <div id="dynamic-gallery" class="project-gallery-stack">
+            <div class="loading-pulse snap-section">Loading gallery...</div>
+        </div>
+
+        <footer class="explore-more snap-section">
+            <h2 class="explore-title">Explore More</h2>
+            <div id="random-projects-grid" class="explore-grid"></div>
+        </footer>
+
+    </main>
+
+    <script src="project-script.js"></script>
+</body>
+</html>
