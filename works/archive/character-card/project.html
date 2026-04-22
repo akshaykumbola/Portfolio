@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Vibes | Akshay Kumbola</title>
+    
+    <meta name="theme-color" content="#111111">
+    
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../style.css">
+
+    <style>
+        :root {
+            --project-title-color: #ffffff;
+            --project-category-color: rgba(255, 255, 255, 0.6);
+            --project-description-color: #cccccc;
+        }
+        
+        .project-title { color: var(--project-title-color) !important; }
+        .project-category { color: var(--project-category-color) !important; }
+        .project-description { color: var(--project-description-color) !important; }
+    </style>
+
+</head>
+
+<body class="project-page project-snap" style="background-image: url('bg.jpg');">
+
+    <nav class="project-nav">
+        <a href="../../../index.html" class="back-btn" aria-label="Go Back">
+            <span class="arrow">&larr;</span>
+        </a>
+    </nav>
+
+    <main>
+        
+        <header class="project-header snap-section">
+            <div class="header-content">
+                <p class="project-category">Archive</p>
+                <h1 class="project-title">Character Card</h1>
+                <p class="project-description">
+                    Character Card is a fun and personal project of mine where I create unique character cards for my friends through different editing styles.
+                </p>
+            </div>
+        </header>
+
+        <div id="dynamic-gallery" class="project-gallery-stack">
+            <div class="loading-pulse snap-section">Loading gallery...</div>
+        </div>
+
+        <footer class="explore-more snap-section">
+            <h2 class="explore-title">Explore More</h2>
+            <div id="random-projects-grid" class="explore-grid"></div>
+        </footer>
+
+    </main>
+
+    <script src="project-script.js"></script>
+</body>
+</html>
