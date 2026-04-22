@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Vibes | Akshay Kumbola</title>
+    
+    <meta name="theme-color" content="#111111">
+    
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../style.css">
+
+    <style>
+        :root {
+            --project-title-color: #ffffff;
+            --project-category-color: rgba(255, 255, 255, 0.921);
+            --project-description-color: #e8e8e8;
+        }
+        
+        .project-title { color: var(--project-title-color) !important; }
+        .project-category { color: var(--project-category-color) !important; }
+        .project-description { color: var(--project-description-color) !important; }
+    </style>
+
+</head>
+
+<body class="project-page project-snap" style="background-image: url('bg.jpg');">
+
+    <nav class="project-nav">
+        <a href="../../../index.html" class="back-btn" aria-label="Go Back">
+            <span class="arrow">&larr;</span>
+        </a>
+    </nav>
+
+    <main>
+        
+        <header class="project-header snap-section">
+            <div class="header-content">
+                <p class="project-category">UI/UX and Branding</p>
+                <h1 class="project-title">Proto: Ship The Prototype</h1>
+                <p class="project-description">
+                    Proto is hypothetical brand created by me and my friend as a part of course curriculum.<br>
+                    The project was focused on creating a space for designers and design students to showcase their works and sell their prototypes. The platform aimed to foster a community of creativity and innovation, allowing users to share their design concepts and connect with potential buyers.<br>
+                    <a href="https://yearn-juice-76049380.figma.site" target="_blank" rel="noopener noreferrer">Click here to view the Figma Prototype.</a><br>
+                    Created By: Akshay Kumbola and Diva Kharakwal
+                </p>
+            </div>
+        </header>
+
+        <div id="dynamic-gallery" class="project-gallery-stack">
+            <div class="loading-pulse snap-section">Loading gallery...</div>
+        </div>
+
+        <footer class="explore-more snap-section">
+            <h2 class="explore-title">Explore More</h2>
+            <div id="random-projects-grid" class="explore-grid"></div>
+        </footer>
+
+    </main>
+
+    <script src="project-script.js"></script>
+</body>
+</html>
