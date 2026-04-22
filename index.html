@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshay Kumbola | Portfolio</title>
+    
+    <meta name="description" content="Portfolio of Akshay Kumbola - Fashion Communication & Photography.">
+    <meta name="keywords" content="Fashion Communication, Photography, Branding, NIFT, Portfolio, Akshay Kumbola, Akshay, Kumbola, Visual Storytelling, creative direction, Street Photography, Photojournalism, Content Creation, photography portfolio, fashion portfolio, branding portfolio, visual storytelling portfolio, creative direction photography, street photography, photojournalism, content creation, fashion communication student, nift kolkata, fashion photographer, visual storyteller, creative portfolio, fashion content creator, branding designer, creative direction photographer, street photographer, photojournalist, fashion portfolio website, creative portfolio website">
+    <meta name="author" content="Akshay Kumbola">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akshaykumbola.in/">
+    <meta property="og:title" content="Akshay Kumbola | Fashion Communication & Photography">
+    <meta property="og:description" content="Welcome to the inside of my brain. Visual storytelling, creative direction, and street photography by Akshay Kumbola.">
+    <meta property="og:image" content="https://akshaykumbola.in/assets/social-preview.jpg">
+
+    <meta name="theme-color" content="#111111">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://akshaykumbola.in/">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        if (window.performance) {
+            const navEntries = performance.getEntriesByType("navigation");
+            if (navEntries.length > 0 && navEntries[0].type === "reload") {
+                sessionStorage.removeItem('portfolioUnlocked');
+                sessionStorage.removeItem('openCategory');
+                sessionStorage.removeItem('scrollPos');
+            } else if (sessionStorage.getItem('portfolioUnlocked') === 'true') {
+                document.documentElement.classList.add('fast-load');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="top-branding" id="top-branding">
+        <img src="favicon.png" class="top-logo-img" alt="Logo">
+        <div class="branding-text">
+            <span class="branding-name">Akshay K</span>
+            <a href="tel:+918590638147" class="branding-phone">+91 85906 38147</a>
+        </div>
+    </div>
+
+    <div id="loader">
+        <div class="loader-content">
+            <img src="assets/logo1.png" id="logo-base" alt="AK Logo Base">
+            <img src="assets/logo2.png" id="logo-text" alt="Akshay Kumbola Text">
+            <div id="progress-container">
+                <div id="progress-line">
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull;</span>
+            <span>Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull; Akshay Kumbola &bull; Portfolio &bull;</span>
+        </div>
+    </div>
+
+    <a href="#" class="skip-btn">Skip</a>
+
+    <div id="image-sequence-container">
+        <img id="sequence-frame" src="" alt="Fashion Sequence">
+    </div>
+
+    <div id="scroll-track"></div>
+
+    <div id="main-screen">
+        
+        <div class="noise-overlay"></div>
+
+        <section class="hero-section">
+            
+            <button class="carousel-arrow prev" aria-label="Previous Slide">&lt;</button>
+            <button class="carousel-arrow next" aria-label="Next Slide">&gt;</button>
+
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    
+                    <li class="carousel-slide current-slide">
+                        <div class="intro-grid">
+                            <div class="intro-image-wrapper">
+                                <img src="assets/character-hay.png" alt="Akshay Intro" class="character-img">
+                            </div>
+                            <div class="intro-text-wrapper">
+                                <h2 class="handwritten-title">Hello, I'm Akshay,</h2>
+                                <p class="handwritten-body">
+                                    A Fashion Communication student, photographer, visual story teller, day dreamer and professional procrastinator.
+                                </p>
+                                <p class="handwritten-signature">
+                                    Welcome to the inside of my Brain,<br>Its a little messy here
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="carousel-slide">
+                        <div class="intro-grid">
+                            <div class="intro-image-wrapper">
+                                <img src="assets/me.png" alt="About Me" class="character-img">
+                            </div>
+                            <div class="intro-text-wrapper">
+                                <h2 class="handwritten-title">About Me.</h2>
+                                <p class="handwritten-body">
+                                    I’m a visual storyteller from <strong>Calicut</strong>, currently creating (and caffeinating) at <strong>NIFT Kolkata</strong>.
+                                    <br><br>
+                                    I love taking pictures of anything and everything around me. I wanna pursue <strong>Fashion</strong>, <strong>creative direction</strong>, <strong>Street</strong>, <strong>Photojournalism</strong>, <strong>Branding</strong> and <strong>Content Creation</strong>. 
+                                    <br><br>
+                                    Let’s create something dope together.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="carousel-slide">
+                        <div class="intro-grid">
+                            <div class="intro-image-wrapper">
+                                <img src="assets/camera.png" alt="Camera Gear" class="character-img">
+                            </div>
+                            <div class="intro-text-wrapper">
+                                <h2 class="handwritten-title">Camera</h2>
+                                <p class="handwritten-body">
+                                    The best thing about not having your own camera, You can use any...
+                                </p>
+                                
+                                <div class="camera-ratings">
+                                    <div class="rating-row">
+                                        <span class="brand-name">Canon</span>
+                                        <div class="star-rating" style="--rating: 4.5;" aria-label="4.5 out of 5 stars"></div>
+                                    </div>
+                                    <div class="rating-row">
+                                        <span class="brand-name">Sony</span>
+                                        <div class="star-rating" style="--rating: 4.5;" aria-label="4.5 out of 5 stars"></div>
+                                    </div>
+                                    <div class="rating-row">
+                                        <span class="brand-name">Nikon</span>
+                                        <div class="star-rating" style="--rating: 4.0;" aria-label="4.0 out of 5 stars"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="carousel-slide">
+                        <div class="intro-grid">
+                            <div class="intro-image-wrapper">
+                                <img src="assets/software.png" alt="Software Stack" class="character-img">
+                            </div>
+                            <div class="intro-text-wrapper">
+                                <h2 class="handwritten-title">Softwares Known</h2>
+                                <p class="handwritten-body">
+                                    The magic doesn't stop when I press the shutter. 
+                                </p>
+                                
+                                <div class="software-grid">
+                                    <div class="software-item">
+                                        <img src="assets/logo_ps.png" alt="Photoshop">
+                                        <span>Photoshop</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_lr.png" alt="Lightroom">
+                                        <span>Lightroom</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_pr.png" alt="Premiere Pro">
+                                        <span>Premiere Pro</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_ae.png" alt="After Effects">
+                                        <span>After Effects</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_ai.png" alt="Illustrator">
+                                        <span>Illustrator</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_au.png" alt="Audition">
+                                        <span>Audition</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_fg.png" alt="Figma">
+                                        <span>Figma</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_id.png" alt="InDesign">
+                                        <span>InDesign</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_su.png" alt="SketchUp">
+                                        <span>SketchUp</span>
+                                    </div>
+                                    <div class="software-item">
+                                        <img src="assets/logo_bl.png" alt="Blender">
+                                        <span>Blender</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="carousel-slide">
+                        <div class="intro-grid">
+                            <div class="intro-image-wrapper">
+                                <img src="assets/hobbies.png" alt="Hobbies" class="character-img">
+                            </div>
+                            <div class="intro-text-wrapper">
+                                <h2 class="handwritten-title">When I'm Free...</h2>
+                                <p class="handwritten-body">
+                                    You'll find me playing football, having tea, reading books or playing videogames. 
+                                    <br><br>
+                                    What is your favorite GOW?
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-indicator current-slide" aria-label="Slide 1"></button>
+                <button class="carousel-indicator" aria-label="Slide 2"></button>
+                <button class="carousel-indicator" aria-label="Slide 3"></button>
+                <button class="carousel-indicator" aria-label="Slide 4"></button>
+                <button class="carousel-indicator" aria-label="Slide 5"></button>
+            </div>
+        </section>
+
+        <div class="socials-divider">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=akshaykumbola@gmail.com" target="_blank" class="social-link" title="Gmail">
+                <img src="assets/gmail.png" alt="Gmail">
+            </a>
+            <a href="https://www.behance.net/akshaykumbola" target="_blank" class="social-link" title="Behance">
+                <img src="assets/behance.png" alt="Behance">
+            </a>
+            <a href="https://www.linkedin.com/in/akshay-kumbola-111022242" target="_blank" class="social-link" title="LinkedIn">
+                <img src="assets/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/akshaykumbola" target="_blank" class="social-link" title="Instagram">
+                <img src="assets/instagram.png" alt="Instagram">
+            </a>
+        </div>
+
+        <section id="portfolio-section">
+            <div class="portfolio-layout">
+                
+                <div class="portfolio-sidebar">
+                    <ul class="portfolio-list">
+                        <li class="portfolio-item" data-category="creative-direction">
+                             <div class="name-wrapper">
+                                 <h3 class="portfolio-name" data-text="Creative Direction">Creative Direction</h3>
+                             </div>
+                        </li>
+                        
+                        <li class="portfolio-item" data-category="photography">
+                            <div class="name-wrapper">
+                                <h3 class="portfolio-name" data-text="Photography">Photography</h3>
+                            </div>
+                        </li>
+                        
+                        <li class="portfolio-item" data-category="branding">
+                            <div class="name-wrapper">
+                                <h3 class="portfolio-name" data-text="Branding">Branding</h3>
+                            </div>
+                        </li>
+                        
+                        <li class="portfolio-item" data-category="miscellaneous">
+                            <div class="name-wrapper">
+                                <h3 class="portfolio-name" data-text="Miscellaneous">Miscellaneous</h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="portfolio-gallery">
+                    
+                    <div class="works-grid" id="grid-creative-direction">
+                        <a href="works/creative-direction/once-upon-a-time-in-hollywood/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/creative-direction/once-upon-a-time-in-hollywood/thumb.jpg" alt="Once upon a time in hollywood">
+                                </div>
+                                <p class="work-title">Once upon a time in hollywood</p>
+                            </div>
+                        </a>
+                        <a href="works/creative-direction/la-vie-en-rose/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/creative-direction/la-vie-en-rose/thumb.jpg" alt="La Vie en Rose">
+                                </div>
+                                <p class="work-title">La Vie en Rose</p>
+                            </div>
+                        </a>
+                         <a href="works/creative-direction/fashion-photography/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/creative-direction/fashion-photography/thumb.jpg" alt="Tailored to Silence the Room">
+                                </div>
+                                <p class="work-title">Tailored to Silence the Room</p>
+                            </div>
+                        </a>
+                         <a href="works/creative-direction/styling-shoot/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/creative-direction/styling-shoot/thumb.jpg" alt="The Sartorial Edit">
+                                </div>
+                                <p class="work-title">The Sartorial Edit</p>
+                            </div>
+                        </a>
+                         <a href="works/creative-direction/beach-shoot/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/creative-direction/beach-shoot/thumb.jpg" alt="Coastal Campaign">
+                                </div>
+                                <p class="work-title">Coastal Campaign</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="works-grid" id="grid-photography">
+                        
+                        <a href="works/photography/404/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/photography/404/thumb.jpg" alt="Error 404: Light not found">
+                                </div>
+                                <p class="work-title">Error 404: Light not found</p>
+                            </div>
+                        </a>
+
+                        <a href="works/photography/mullick/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/photography/mullick/thumb.jpg" alt="Photowalk: Mullick Ghat">
+                                </div>
+                                <p class="work-title">Photowalk: Mullick Ghat</p>
+                            </div>
+                        </a>
+
+                        <a href="works/photography/vilom/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/photography/vilom/thumb.jpg" alt="Runway: Vilom">
+                                </div>
+                                <p class="work-title">Runway: Vilom</p>
+                            </div>
+                        </a>
+
+                        <a href="works/photography/sundarban/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/photography/sundarban/thumb.jpg" alt="Sundarban: Biosphere and Tiger Reserve">
+                                </div>
+                                <p class="work-title">Sundarban: Biosphere and Tiger Reserve</p>
+                            </div>
+                        </a>
+
+                        <a href="works/photography/villom2/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/photography/villom2/thumb.jpg" alt="Photowalk: Vilom">
+                                </div>
+                                <p class="work-title">Photowalk: Vilom</p>
+                            </div>
+                        </a>
+
+                        <a href="works/photography/pandal/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/photography/pandal/thumb.jpg" alt="Puja of Innocence">
+                                </div>
+                                <p class="work-title">Puja of Innocence</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    
+                    <div class="works-grid" id="grid-branding">
+                        <a href="works/branding/gaia-dimiourgia/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/branding/gaia-dimiourgia/thumb.jpg" alt="Gaia Dimiourgia">
+                                </div>
+                                <p class="work-title">Gaia Dimiourgia</p>
+                            </div>
+                        </a>
+                        <a href="works/branding/proto/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/branding/proto/thumb.jpg" alt="UI/UX and Branding: Proto">
+                                </div>
+                                <p class="work-title">UI/UX and Branding: Proto</p>
+                            </div>
+                        </a>
+                         <a href="works/branding/looped/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/branding/looped/thumb.jpg" alt="Typeface design: Looped">
+                                </div>
+                                <p class="work-title">Typeface design: Looped</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="works-grid" id="grid-miscellaneous">
+                        <a href="works/archive/vilom-trailer/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/archive/vilom-trailer/thumb.jpg" alt="Vilom Trailer">
+                                </div>
+                                <p class="work-title">Vilom Trailer</p>
+                            </div>
+                        </a>
+                        <a href="works/archive/loco-lock/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/archive/loco-lock/thumb.jpg" alt="Branding: Loco Lock">
+                                </div>
+                                <p class="work-title">Branding: Loco Lock</p>
+                            </div>
+                        </a>
+                        <a href="works/archive/kumartuli-shoot/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/archive/kumartuli-shoot/thumb.jpg" alt="Kumartuli Shoot">
+                                </div>
+                                <p class="work-title">Kumartuli Shoot</p>
+                            </div>
+                        </a>
+                        <a href="works/archive/rivayath/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/archive/rivayath/thumb.jpg" alt="Rivayath:Styling">
+                                </div>
+                                <p class="work-title">Rivayath:Styling</p>
+                            </div>
+                        </a>
+                        <a href="works/archive/agomoni/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/archive/agomoni/thumb.jpg" alt="Agomoni">
+                                </div>
+                                <p class="work-title">Agomoni</p>
+                            </div>
+                        </a>
+                        <a href="works/archive/character-card/project.html">
+                            <div class="work-card">
+                                <div class="work-thumb">
+                                    <img src="works/archive/character-card/thumb.jpg" alt="Character Card">
+                                </div>
+                                <p class="work-title">Character Card</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

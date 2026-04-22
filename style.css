@@ -1,0 +1,1010 @@
+/* =========================================
+   1. GLOBAL RESET & BODY
+   ========================================= */
+html {
+    scrollbar-gutter: stable; 
+}
+html, body {
+    margin: 0; padding: 0; 
+    background-color: #111; 
+    overflow-x: clip; 
+}
+
+/* =========================================
+   2. INSTANT HIDE FOR BACK BUTTON NAVIGATION
+   ========================================= */
+html.fast-load #loader,
+html.fast-load #scroll-track,
+html.fast-load #image-sequence-container,
+html.fast-load .skip-btn {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+html.fast-load body {
+    opacity: 0; 
+}
+html.fast-load.page-ready body {
+    opacity: 1; 
+    transition: opacity 0.4s ease-out;
+}
+
+/* =========================================
+   3. SCROLLING TOP LOGO
+   ========================================= */
+.top-logo {
+    position: absolute; 
+    top: 40px;  
+    left: 30px;
+    width: 48px; 
+    height: auto;
+    z-index: 20; 
+    filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.5)); 
+}
+
+/* =========================================
+   4. SCROLL TRACK
+   ========================================= */
+#scroll-track {
+    height: 500vh; 
+    width: 100%;
+    position: relative;
+    z-index: 5; 
+    pointer-events: none;
+}
+
+/* =========================================
+   5. LOADER
+   ========================================= */
+#loader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #ffffff; 
+    z-index: 9999; 
+    display: flex; justify-content: center; align-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-content { position: relative; width: 100%; height: 100%; }
+
+#logo-base, #logo-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    width: 90vw; max-width: 1400px; height: auto;
+}
+#logo-base { z-index: 1; opacity: 1; }
+#logo-text { z-index: 2; opacity: 0.1; transition: opacity 0.1s linear; }
+
+#progress-container {
+    position: absolute; z-index: 3; left: 50%; transform: translateX(-50%);
+    top: 52%; 
+    width: 22vw; max-width: 400px; height: 2px;
+    background-color: transparent; overflow: visible; 
+}
+#progress-line {
+    width: 0%; height: 100%; background-color: #000000; position: relative; 
+}
+#progress-text {
+    position: absolute; right: 0; transform: translateX(100%); padding-left: 8px; top: -7px; 
+    font-family: 'Figtree', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 1px; color: #000; white-space: nowrap; 
+}
+
+/* =========================================
+   6. TOP TICKER
+   ========================================= */
+.ticker-wrap {
+    width: 100%; height: 22px; background-color: #1a1a1a;
+    display: flex; align-items: center; position: fixed; top: 0; left: 0; z-index: 3000;
+}
+.ticker { display: flex; white-space: nowrap; animation: marquee 25s linear infinite; }
+.ticker span {
+    font-family: 'Playfair Display', serif; color: #fff; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 3px; padding-right: 60px;
+}
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* =========================================
+   7. SKIP BUTTON
+   ========================================= */
+.skip-btn {
+    position: fixed; top: 50px; right: 30px; padding: 10px 30px;
+    background-color: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.6); 
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); 
+    color: #1c1c1c; 
+    border-radius: 50px;
+    font-family: 'Roboto Slab', serif; font-size: 1rem; font-weight: 500; text-decoration: none; 
+    z-index: 4000; 
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.skip-btn:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.skip-btn.exit { transform: translateY(-300%); opacity: 0; }
+
+/* =========================================
+   8. ANIMATION LAYER (BACKGROUND)
+   ========================================= */
+#image-sequence-container {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+    z-index: 1; transition: transform 0.1s linear, filter 0.1s linear;
+    will-change: transform, filter; transform-origin: center center;
+    background-color: #ffffff; 
+}
+#sequence-frame { 
+    width: 100%; height: 100%; 
+    object-fit: contain; 
+}
+
+/* =========================================
+   9. MAIN SCREEN (Dark Gradient + White Noise)
+   ========================================= */
+#main-screen {
+    position: relative; z-index: 10; width: 100%; min-height: 100vh; 
+    background: radial-gradient(circle at center, #5A5A5A 0%, #000000 90%);
+    color: #ffffff !important; box-shadow: 0 -20px 50px rgba(0,0,0,0.8); 
+    transform: none; border-radius: 0; 
+}
+
+.noise-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.noise-overlay::after {
+    content: ""; position: absolute;
+    top: -100%; left: -100%; width: 300%; height: 300%;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAAAAAAAAAABMTExERERmZmZnU/moAAAACHRSTlMAMwA3M2YzMzOq680pAAAAJElEQVQ4y2NgQAX8DIoMjCCQAQaMChAZGEUQMjCKIGRgFEHIwAAAUQ4Dz6/E8sQAAAAASUVORK5CYII=");
+    background-repeat: repeat;
+    filter: invert(1); background-size: 150px; opacity: 0.2; 
+    pointer-events: none; z-index: 0; 
+    animation: grain 0.5s steps(10) infinite;
+}
+
+/* =========================================
+   10. CAROUSEL HERO SECTION 
+   ========================================= */
+.hero-section {
+    position: relative; height: 100vh; width: 100%; overflow: hidden; 
+    display: flex; justify-content: center; align-items: center; z-index: 2; 
+}
+
+.carousel-track-container { height: 100%; width: 100%; position: relative; }
+.carousel-track {
+    padding: 0; margin: 0; list-style: none; position: relative;
+    height: 100%; width: 100%; transition: transform 0.6s ease-in-out; 
+    user-select: none; 
+    touch-action: pan-y; 
+}
+.carousel-slide {
+    position: absolute; top: 0; bottom: 0; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.carousel-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; font-family: 'Roboto Slab', serif;
+    font-size: 3rem; color: rgba(255,255,255,0.4); cursor: pointer;
+    z-index: 20; padding: 20px; transition: color 0.3s;
+}
+.carousel-arrow:hover { color: rgba(255,255,255,1); }
+.carousel-arrow.prev { left: 20px; }
+.carousel-arrow.next { right: 20px; }
+
+.carousel-nav {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 15px; z-index: 20;
+}
+.carousel-indicator {
+    border: none; border-radius: 50%; width: 12px; height: 12px;
+    background-color: #fff; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+    opacity: 0.5; transform: scale(0.9); transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.carousel-indicator.current-slide {
+    opacity: 1; transform: scale(1.3); box-shadow: 0 0 10px rgba(255,255,255,0.5); 
+}
+
+/* =========================================
+   11. GRID & TYPOGRAPHY (Carousel Items)
+   ========================================= */
+.intro-grid {
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    gap: 40px; max-width: 1000px; width: 100%; padding: 20px;
+}
+.intro-image-wrapper { flex: 1; display: flex; justify-content: flex-end; align-items: center; }
+
+.character-img {
+    height: 525px; 
+    width: auto; max-width: 100%; object-fit: contain; 
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.5)); 
+    transform: rotate(-3deg); transition: transform 0.3s ease;
+    pointer-events: none; 
+}
+.character-img:hover { transform: rotate(0deg) scale(1.02); }
+
+.intro-text-wrapper { flex: 1.5; text-align: left; color: inherit; }
+
+.handwritten-title { 
+    font-family: 'Roboto Slab', serif; font-size: 3rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.2; color: #ffffff; 
+}
+.handwritten-body { 
+    font-family: 'Roboto Slab', serif; font-size: 1.5rem; font-weight: 300; line-height: 1.6; margin: 0 0 10px 0; color: #eeeeee; 
+}
+.handwritten-signature { 
+    font-family: 'Roboto Slab', serif; font-size: 1.2rem; color: #cccccc; 
+    margin-top: 20px; padding-top: 20px; border-top: 2px dashed #666; display: inline-block; transform: rotate(-1deg); 
+}
+
+.camera-ratings {
+    margin-top: 20px; display: flex; flex-direction: column; gap: 12px;
+}
+.rating-row {
+    display: flex; align-items: center; gap: 20px;
+}
+.brand-name {
+    font-family: 'Roboto Slab', serif; font-size: 1.3rem; font-weight: 500; color: #ffffff; width: 80px; 
+}
+.star-rating {
+    font-family: Arial, sans-serif; font-size: 1.8rem; position: relative;
+    display: inline-block; color: rgba(255, 255, 255, 0.2); line-height: 1;
+}
+.star-rating::before { content: '★★★★★'; }
+.star-rating::after {
+    content: '★★★★★'; color: #ffffff; position: absolute;
+    top: 0; left: 0; width: calc(var(--rating) / 5 * 100%);
+    overflow: hidden; white-space: nowrap;
+}
+
+/* =========================================
+   12. SOFTWARE ICONS GRID
+   ========================================= */
+.software-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+    max-width: 90%;
+}
+
+.software-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 14px 6px 6px; 
+    border-radius: 50px; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.software-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.software-item img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.software-item span {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.9rem;
+    color: #eeeeee;
+    font-weight: 400;
+}
+
+/* =========================================
+   13. SOCIAL DIVIDER
+   ========================================= */
+.socials-divider {
+    position: relative; width: 100%; padding: 0 5%; display: flex;
+    align-items: center; justify-content: center; gap: 30px; z-index: 50;
+    box-sizing: border-box; margin-top: 20px; margin-bottom: 40px; 
+}
+.socials-divider::before, .socials-divider::after {
+    content: ""; flex-grow: 1; height: 1px; background-color: rgba(255, 255, 255, 0.15); max-width: 500px;       
+}
+.social-link {
+    display: block; width: 24px; height: 24px; transition: transform 0.2s ease, opacity 0.2s; opacity: 0.7;
+}
+.social-link img { width: 100%; height: 100%; object-fit: contain; }
+.social-link:hover { transform: translateY(-3px); opacity: 1; }
+
+/* =========================================
+   14. PORTFOLIO SPLIT LAYOUT
+   ========================================= */
+#portfolio-section {
+    padding: 80px 5% 150px 5%;
+    position: relative;
+    z-index: 10;
+    overflow-anchor: none; 
+}
+
+.portfolio-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* --- LEFT SIDE: CATEGORIES --- */
+.portfolio-sidebar {
+    flex: 0 0 30%; 
+    position: sticky; 
+    top: 30vh; 
+    height: fit-content; 
+    align-self: flex-start; 
+}
+
+.portfolio-list {
+    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column;
+}
+
+.portfolio-item {
+    display: flex; align-items: center; gap: 20px; cursor: pointer;
+    padding: 20px 0; 
+    border-bottom: 1px solid #ffffff; 
+    transition: transform 0.3s ease; 
+}
+
+.portfolio-list .portfolio-item:first-child {
+    border-top: 1px solid #ffffff;
+}
+
+.name-wrapper {
+    overflow: hidden; height: 3.2rem; line-height: 3.2rem;
+}
+
+.portfolio-name {
+    font-family: 'Playfair Display', serif; font-size: 2.75rem; text-transform: uppercase;
+    color: #ffffff; margin: 0; display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.portfolio-name::after {
+    content: attr(data-text); display: block; color: #ffffff; 
+}
+
+.portfolio-item:hover .portfolio-name, .portfolio-item.active .portfolio-name {
+    transform: translateY(-3.2rem); 
+}
+
+.portfolio-list.category-selected .portfolio-item:not(.active) .portfolio-name {
+    opacity: 0.15;
+}
+.portfolio-list:hover .portfolio-item:not(:hover) .portfolio-name {
+    opacity: 0.15 !important;
+}
+.portfolio-list:hover .portfolio-item:hover .portfolio-name {
+    opacity: 1 !important;
+}
+
+/* --- RIGHT SIDE: GALLERY --- */
+.portfolio-gallery {
+    flex: 1; 
+    padding-top: 20px; 
+    position: relative;
+}
+
+.works-grid {
+    display: none; 
+    grid-template-columns: repeat(3, calc(33.333% - 26.66px)); 
+    gap: 40px;
+    width: 100%;
+    opacity: 0; transform: translateX(-100px); pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    align-items: start; 
+    align-content: start;
+}
+
+.works-grid.active {
+    display: grid; 
+}
+
+.works-grid.show {
+    opacity: 1; transform: translateX(0); pointer-events: auto;
+}
+
+.works-grid a {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    text-decoration: none;
+}
+
+.work-card {
+    display: flex; flex-direction: column; gap: 15px; cursor: pointer; transition: transform 0.3s ease;
+    width: 100%; 
+}
+.work-card:hover { transform: translateY(-5px); }
+
+/* Bulletproof padding-top hack for perfect 4:3 rectangles globally */
+.work-thumb {
+    width: 100%; 
+    padding-top: 75%; 
+    background-color: #222; 
+    border-radius: 4px; 
+    position: relative; 
+    overflow: hidden; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.work-thumb img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.work-title {
+    font-family: 'Figtree', sans-serif; font-size: 1rem; color: #cccccc; margin: 0; font-weight: 400; letter-spacing: 1px;
+}
+
+/* =========================================
+   15. MOBILE RESPONSIVE (DESKTOP SAFEGUARDED)
+   ========================================= */
+@media (max-width: 900px) {
+    
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .top-logo {
+        width: 32px; 
+        left: 5%;    
+        top: 35px;
+    }
+
+    .portfolio-layout { 
+        flex-direction: column; 
+        gap: 20px; 
+    }
+    
+    #portfolio-section {
+        padding: 0 0 100px 0; 
+    }
+
+    .portfolio-sidebar { 
+        position: sticky; 
+        top: 0; 
+        width: 100%;
+        background-color: #111; 
+        padding: 10px 5%; 
+        box-sizing: border-box;
+        z-index: 30;
+        align-self: auto;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .portfolio-list { 
+        flex-direction: row; 
+        flex-wrap: nowrap; 
+        justify-content: space-between; 
+        gap: 5px; 
+        padding: 0; 
+        width: 100%;
+    }
+    
+    .portfolio-item { 
+        padding: 5px 0; 
+        border: none !important; 
+        flex: 0 0 auto;
+        position: relative;
+    }
+    
+    .name-wrapper { 
+        height: 1.2rem; 
+        line-height: 1.2rem; 
+        overflow: hidden; 
+    }
+    
+    .portfolio-name { 
+        font-size: 0.8rem; 
+        opacity: 0.4;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+        white-space: nowrap; 
+    }
+    
+    .portfolio-item:hover .portfolio-name { transform: none !important; }
+    
+    .portfolio-item.active .portfolio-name { 
+        opacity: 1;
+        transform: translateY(-1.2rem) !important; 
+    }
+    
+    .portfolio-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+    }
+
+    .portfolio-list:hover .portfolio-item:not(:hover) .portfolio-name {
+        opacity: 0.4 !important; 
+    }
+    .portfolio-list.category-selected .portfolio-item:not(.active) .portfolio-name {
+        opacity: 0.4; 
+    }
+    
+    .portfolio-gallery {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 5% 0 5%;
+    }
+
+    .works-grid { 
+        grid-template-columns: repeat(2, calc(50% - 7.5px)); 
+        gap: 15px; 
+        width: 100%;
+        align-items: start; 
+        align-content: start;
+    }
+    
+    .work-thumb {
+        border-radius: 6px; 
+    }
+    
+    .work-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    .work-title {
+        font-size: 0.9rem; 
+    }
+
+    .hero-section {
+        height: 45vh; 
+        min-height: 440px; 
+        overflow: visible; 
+    }
+    
+    .carousel-track-container {
+        overflow: hidden; 
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-section .intro-grid { 
+        margin-top: 110px; 
+        flex-direction: row; 
+        gap: 15px; 
+        text-align: left; 
+        padding: 0 5%;
+        align-items: flex-start; 
+    }
+    .intro-image-wrapper { 
+        justify-content: flex-end; 
+        flex: 1;
+        align-items: flex-start; 
+    }
+    .character-img { 
+        height: auto; 
+        max-height: 25vh; 
+        width: 100%;
+        object-fit: contain;
+        object-position: top; 
+    } 
+    .intro-text-wrapper { 
+        flex: 1.5;
+        text-align: left; 
+    }
+    
+    .handwritten-title { 
+        font-size: 1.3rem; 
+        margin-top: 0; 
+        margin-bottom: 5px; 
+        line-height: 1; 
+    } 
+    .handwritten-body { font-size: 0.85rem; line-height: 1.4; margin-bottom: 5px; } 
+    .handwritten-signature { font-size: 0.75rem; margin-top: 10px; padding-top: 10px;} 
+    
+    .rating-row { justify-content: flex-start; gap: 10px; }
+    .star-rating { font-size: 1.2rem; }
+    .brand-name { width: 50px; font-size: 0.9rem; }
+    
+    .carousel-nav { 
+        bottom: -20px; 
+        gap: 10px; 
+    }
+    .carousel-indicator { 
+        width: 6px !important; 
+        height: 6px !important; 
+        min-width: 6px !important;
+        min-height: 6px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        box-sizing: border-box !important;
+    }
+
+    .socials-divider {
+        margin-top: 45px; 
+        margin-bottom: 10px; 
+    }
+
+    .carousel-arrow { 
+        font-size: 1.8rem; 
+        padding: 5px; 
+        background: transparent; 
+    }
+    .carousel-arrow.prev { left: 5px; }
+    .carousel-arrow.next { right: 5px; }
+
+    .ticker-wrap { height: 34px; }
+    .ticker span { font-size: 16px; }
+
+    #logo-base, #logo-text { width: 140vw; max-width: none; }
+    #progress-container { width: 34vw; top: 50.75%; }
+    #progress-line { height: 1px; }
+    #progress-text { font-size: 6px; top: -6px; }
+
+    /* Software Grid Mobile */
+    .software-grid {
+        max-width: 100%;
+        gap: 8px;
+    }
+    .software-item {
+        padding: 5px 12px 5px 5px;
+    }
+    .software-item img {
+        width: 20px;
+        height: 20px;
+    }
+    .software-item span {
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================================
+   16. FULL-SCREEN SNAP PROJECT PAGES
+   ========================================= */
+
+/* Enables Magnetic Scroll Snapping on the whole page */
+html.project-snap {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body.project-page {
+    background-color: #000; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow-x: hidden;
+    opacity: 0; 
+    transition: opacity 0.6s ease-out;
+    margin: 0;
+    padding: 0;
+}
+body.project-page.loaded {
+    opacity: 1; 
+}
+
+/* Back Button Nav */
+.project-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 5%;
+    box-sizing: border-box;
+    z-index: 100;
+    pointer-events: none; 
+    display: block; 
+}
+
+/* Arrow-Only Circular Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 50%; 
+    color: #ffffff; 
+    font-size: 1.2rem;
+    text-decoration: none;
+    pointer-events: auto; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(-5px); 
+}
+
+/* The Magnetic Snap Sections */
+.snap-section {
+    width: 100vw;
+    height: 100vh; /* Desktop: Forces exactly 1 screen tall */
+    scroll-snap-align: start; 
+    scroll-snap-stop: always; 
+}
+
+/* Page 1: Text Header */
+.project-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    box-sizing: border-box;
+    background-color: transparent; 
+}
+
+.project-category {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin: 0 0 30px 0;
+    line-height: 1.1;
+}
+
+.project-description {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Page 2+: Media Gallery */
+.project-gallery-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Desktop gap between images */
+    width: 100vw;
+    background-color: transparent; 
+}
+
+.project-media {
+    width: 100vw;
+    height: 100vh; /* Desktop: Forces image to fill the 100vh container */
+    object-fit: contain; 
+    display: block;
+    background-color: transparent; 
+}
+
+/* Loading Indicator */
+.loading-pulse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Figtree', sans-serif;
+    color: #ffffff;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* =========================================
+   17. EXPLORE MORE FOOTER (INNER PAGES)
+   ========================================= */
+.explore-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Keeps the grid centered on ultra-wide screens */
+    background-color: #050505;
+    padding: 80px 5%;
+    box-sizing: border-box;
+}
+
+/* Left-aligned & scaled down title */
+.explore-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; 
+    color: #ffffff;
+    margin: 0 0 30px 0;
+    text-align: left; 
+    width: 100%;
+    max-width: 1200px; /* Aligns perfectly with the left edge of the grid */
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.explore-card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.explore-card:hover {
+    transform: translateY(-5px);
+}
+
+.explore-thumb {
+    width: 100%;
+    padding-top: 75%; 
+    background-color: #222;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.explore-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.explore-card:hover .explore-thumb img {
+    transform: scale(1.05);
+}
+
+.explore-name {
+    font-family: 'Figtree', sans-serif;
+    font-size: 1rem;
+    color: #cccccc;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Mobile Tweaks for Inner Pages & Explore More */
+@media (max-width: 900px) {
+    .project-nav { padding: 20px 5%; }
+    .project-title { font-size: 2.5rem; }
+    .project-description { font-size: 0.95rem; text-align: left; }
+    
+    .project-header { text-align: left; align-items: flex-start; justify-content: center; }
+    
+    /* DISABLE SNAP SCROLLING ON MOBILE FOR NATURAL STACKING */
+    html.project-snap {
+        scroll-snap-type: none;
+    }
+    .snap-section {
+        scroll-snap-align: none;
+        height: auto; 
+    }
+    
+    .project-header.snap-section {
+        min-height: 100vh;
+    }
+
+    .project-media {
+        height: auto;
+        width: 100%;
+    }
+
+    .project-gallery-stack {
+        gap: 10px; /* Exact pixel gap on mobile */
+    }
+
+    /* Explore More Mobile overrides */
+    .explore-grid {
+        grid-template-columns: repeat(2, 1fr); /* Forces exactly 2 cards on mobile */
+        gap: 15px;
+    }
+    .explore-title {
+        font-size: 1.4rem; /* Scaled down for mobile */
+        margin-bottom: 20px;
+    }
+    .explore-more {
+        padding: 60px 5%; 
+    }
+}
+
+/* =========================================
+   18. TOP BRANDING HEADER
+   ========================================= */
+.top-branding {
+    position: absolute; 
+    top: 30px;
+    left: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0; /* Hidden during animation */
+    pointer-events: none; /* Prevents clicking when hidden */
+    transition: opacity 0.8s ease;
+}
+
+/* This class gets added by JS when animation is done */
+.top-branding.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.top-logo-img {
+    width: 35px;
+    height: auto;
+}
+
+.branding-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.branding-name {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.branding-phone {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: #888888;
+    text-decoration: none;
+    margin-top: 2px;
+    transition: color 0.3s ease;
+}
+
+.branding-phone:hover {
+    color: #ffffff;
+}
+
+/* Hide the old logo if it still exists in your CSS */
+.top-logo {
+    display: none;
+}
+
+/* Mobile Tweaks for Top Branding */
+@media (max-width: 900px) {
+    .top-branding {
+        top: 70px;
+        left: 20px;
+    }
+}
