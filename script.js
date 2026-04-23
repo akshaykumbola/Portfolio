@@ -94,9 +94,12 @@ function checkSessionMemory() {
 }
 
 // =========================================
-// 3. SMART PRELOADER
+// 3. SMART PRELOADER (True Asset Loader)
 // =========================================
 function preloadImages() {
+    imagesLoadedCount = 0; 
+    validFrames = {};
+
     for (let i = 1; i <= totalFrames; i++) {
         findImage(i);
     }
@@ -104,66 +107,66 @@ function preloadImages() {
 
 function findImage(index) {
     const tryJpg = new Image();
-    tryJpg.src = `${folderPath}${index}.jpg`;
+    
+    // IMPORTANT: Handlers must be attached BEFORE setting the .src 
+    // to prevent cache race conditions on fast connections.
     tryJpg.onload = () => { markImageAsLoaded(index, tryJpg.src); };
     tryJpg.onerror = () => {
         const tryJpeg = new Image();
-        tryJpeg.src = `${folderPath}${index}.jpeg`;
         tryJpeg.onload = () => { markImageAsLoaded(index, tryJpeg.src); };
         tryJpeg.onerror = () => {
             const tryPng = new Image();
-            tryPng.src = `${folderPath}${index}.png`;
             tryPng.onload = () => { markImageAsLoaded(index, tryPng.src); };
             tryPng.onerror = () => {
-                if (index === 1) console.error("Frame 1 missing.");
+                console.error(`Missing frame ${index}.`);
                 markImageAsLoaded(index, null);
             };
+            tryPng.src = `${folderPath}${index}.png`;
         };
+        tryJpeg.src = `${folderPath}${index}.jpeg`;
     };
+    
+    tryJpg.src = `${folderPath}${index}.jpg`;
 }
 
 function markImageAsLoaded(index, path) {
-    if (path) {
-        validFrames[index] = path;
-        const hiddenImg = new Image();
-        hiddenImg.src = path; 
-        if (index === 1) frameImage.src = path;
+    // SAFETY LOCK: If we already counted this frame, ignore any duplicate events!
+    if (validFrames[index] !== undefined) return; 
+
+    // Mark it so it can never be processed again
+    validFrames[index] = path || 'failed'; 
+    
+    // Immediately set the very first frame to the screen so it's ready
+    if (path && index === 1) {
+        frameImage.src = path;
     }
+    
     imagesLoadedCount++;
-    checkCompletion();
+    updateLoadingUI();
 }
 
 // =========================================
-// 4. LOADING SCREEN
+// 4. LOADING SCREEN (Real-time update)
 // =========================================
-function startLoadingAnimation(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsed = timestamp - startTime;
+function updateLoadingUI() {
+    // Calculate exact percentage based on downloaded files
+    let progress = imagesLoadedCount / totalFrames;
     
-    let progress = elapsed / animationDuration;
-    if (progress > 1) progress = 1;
+    // Hard clamp to prevent the bar from ever exceeding 100% mathematically
+    if (progress > 1) progress = 1; 
 
+    // Update the UI
     progressLine.style.width = `${progress * 100}%`;
     progressText.innerText = `${Math.floor(progress * 100)}%`;
     logoText.style.opacity = 0.1 + (0.9 * progress); 
     logoBase.style.opacity = 1.0 - (0.9 * progress); 
 
-    if (progress < 1) {
-        requestAnimationFrame(startLoadingAnimation);
-    } else {
-        isMinTimePassed = true;
-        checkCompletion();
-    }
-}
-
-function checkCompletion() {
-    if (!isMinTimePassed) return;
-    const threshold = totalFrames * 0.9;
-    
-    if (imagesLoadedCount >= threshold) {
+    // Once every single frame has been checked/loaded
+    if (imagesLoadedCount >= totalFrames) {
         setTimeout(() => {
             loader.classList.add('hidden');
-        }, holdDuration);
+            document.documentElement.classList.add('page-ready');
+        }, 400); // 400ms delay so you actually get to see it say "100%"
     }
 }
 
