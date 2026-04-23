@@ -463,12 +463,111 @@ html.fast-load.page-ready body {
         -webkit-tap-highlight-color: transparent;
     }
     
+    /* Top Branding Adjustments */
     .top-logo {
         width: 32px; 
         left: 5%;    
         top: 35px;
     }
 
+    .top-branding {
+        top: 70px;
+        left: 20px;
+    }
+
+    /* Hero Section Fixes to Prevent Overlap */
+    .hero-section {
+        height: auto; 
+        min-height: 550px; 
+        padding-top: 130px; /* Forces content below the top branding */
+        padding-bottom: 80px; 
+        overflow: visible; 
+    }
+    
+    .carousel-track-container {
+        overflow: visible; 
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-section .intro-grid { 
+        margin-top: 0; 
+        flex-direction: row; 
+        gap: 15px; 
+        text-align: left; 
+        padding: 0 5%;
+        align-items: flex-start; 
+    }
+    .intro-image-wrapper { 
+        justify-content: flex-end; 
+        flex: 1;
+        align-items: flex-start; 
+    }
+    .character-img { 
+        height: auto; 
+        max-height: 180px; /* Reduced to leave room for content */
+        width: 100%;
+        object-fit: contain;
+        object-position: top; 
+    } 
+    .intro-text-wrapper { 
+        flex: 1.5;
+        text-align: left; 
+    }
+    
+    .handwritten-title { 
+        font-size: 1.3rem; 
+        margin-top: 0; 
+        margin-bottom: 5px; 
+        line-height: 1; 
+    } 
+    .handwritten-body { font-size: 0.85rem; line-height: 1.4; margin-bottom: 5px; } 
+    .handwritten-signature { font-size: 0.75rem; margin-top: 10px; padding-top: 10px;} 
+    
+    .rating-row { justify-content: flex-start; gap: 10px; }
+    .star-rating { font-size: 1.2rem; }
+    .brand-name { width: 50px; font-size: 0.9rem; }
+    
+    .carousel-nav { 
+        bottom: -20px; 
+        gap: 10px; 
+    }
+    .carousel-indicator { 
+        width: 6px !important; 
+        height: 6px !important; 
+        min-width: 6px !important;
+        min-height: 6px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Software Grid Mobile Fix (Forces 2 Columns) */
+    .software-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .software-item {
+        padding: 6px 10px;
+        justify-content: flex-start;
+    }
+    .software-item img {
+        width: 18px;
+        height: 18px;
+    }
+    .software-item span {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* General Layout */
     .portfolio-layout { 
         flex-direction: column; 
         gap: 20px; 
@@ -483,20 +582,27 @@ html.fast-load.page-ready body {
         top: 0; 
         width: 100%;
         background-color: #111; 
-        padding: 10px 5%; 
+        padding: 10px 5% 0 5%; 
         box-sizing: border-box;
         z-index: 30;
         align-self: auto;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     
+    /* Menu Cutoff Fix (Horizontal Scroll) */
     .portfolio-list { 
         flex-direction: row; 
         flex-wrap: nowrap; 
-        justify-content: space-between; 
-        gap: 5px; 
-        padding: 0; 
+        justify-content: flex-start; /* Fixes cutoff */
+        gap: 25px; 
+        padding: 0 0 10px 0; 
         width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .portfolio-list::-webkit-scrollbar {
+        display: none;
     }
     
     .portfolio-item { 
@@ -504,6 +610,9 @@ html.fast-load.page-ready body {
         border: none !important; 
         flex: 0 0 auto;
         position: relative;
+    }
+    .portfolio-item:last-child {
+        padding-right: 20px; /* Safe space to prevent last item clipping */
     }
     
     .name-wrapper { 
@@ -543,6 +652,7 @@ html.fast-load.page-ready body {
         opacity: 0.4; 
     }
     
+    /* Grids & Cards */
     .portfolio-gallery {
         width: 100%;
         box-sizing: border-box;
@@ -557,92 +667,13 @@ html.fast-load.page-ready body {
         align-content: start;
     }
     
-    .work-thumb {
-        border-radius: 6px; 
-    }
-    
-    .work-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    
-    .work-title {
-        font-size: 0.9rem; 
-    }
-
-    .hero-section {
-        height: 45vh; 
-        min-height: 440px; 
-        overflow: visible; 
-    }
-    
-    .carousel-track-container {
-        overflow: hidden; 
-        width: 100%;
-        height: 100%;
-    }
-    
-    .hero-section .intro-grid { 
-        margin-top: 110px; 
-        flex-direction: row; 
-        gap: 15px; 
-        text-align: left; 
-        padding: 0 5%;
-        align-items: flex-start; 
-    }
-    .intro-image-wrapper { 
-        justify-content: flex-end; 
-        flex: 1;
-        align-items: flex-start; 
-    }
-    .character-img { 
-        height: auto; 
-        max-height: 25vh; 
-        width: 100%;
-        object-fit: contain;
-        object-position: top; 
-    } 
-    .intro-text-wrapper { 
-        flex: 1.5;
-        text-align: left; 
-    }
-    
-    .handwritten-title { 
-        font-size: 1.3rem; 
-        margin-top: 0; 
-        margin-bottom: 5px; 
-        line-height: 1; 
-    } 
-    .handwritten-body { font-size: 0.85rem; line-height: 1.4; margin-bottom: 5px; } 
-    .handwritten-signature { font-size: 0.75rem; margin-top: 10px; padding-top: 10px;} 
-    
-    .rating-row { justify-content: flex-start; gap: 10px; }
-    .star-rating { font-size: 1.2rem; }
-    .brand-name { width: 50px; font-size: 0.9rem; }
-    
-    .carousel-nav { 
-        bottom: -20px; 
-        gap: 10px; 
-    }
-    .carousel-indicator { 
-        width: 6px !important; 
-        height: 6px !important; 
-        min-width: 6px !important;
-        min-height: 6px !important;
-        border-radius: 50% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-        box-sizing: border-box !important;
-    }
+    .work-thumb { border-radius: 6px; }
+    .work-title { font-size: 0.9rem; }
 
     .socials-divider {
         margin-top: 45px; 
         margin-bottom: 10px; 
     }
-
     .carousel-arrow { 
         font-size: 1.8rem; 
         padding: 5px; 
@@ -658,22 +689,6 @@ html.fast-load.page-ready body {
     #progress-container { width: 34vw; top: 50.75%; }
     #progress-line { height: 1px; }
     #progress-text { font-size: 6px; top: -6px; }
-
-    /* Software Grid Mobile */
-    .software-grid {
-        max-width: 100%;
-        gap: 8px;
-    }
-    .software-item {
-        padding: 5px 12px 5px 5px;
-    }
-    .software-item img {
-        width: 20px;
-        height: 20px;
-    }
-    .software-item span {
-        font-size: 0.8rem;
-    }
 }
 
 /* =========================================
@@ -895,7 +910,7 @@ body.project-page.loaded {
     letter-spacing: 1px;
 }
 
-/* Mobile Tweaks for Inner Pages & Explore More */
+/* Explore More Mobile overrides */
 @media (max-width: 900px) {
     .project-nav { padding: 20px 5%; }
     .project-title { font-size: 2.5rem; }
@@ -903,35 +918,18 @@ body.project-page.loaded {
     
     .project-header { text-align: left; align-items: flex-start; justify-content: center; }
     
-    /* DISABLE SNAP SCROLLING ON MOBILE FOR NATURAL STACKING */
-    html.project-snap {
-        scroll-snap-type: none;
-    }
-    .snap-section {
-        scroll-snap-align: none;
-        height: auto; 
-    }
-    
-    .project-header.snap-section {
-        min-height: 100vh;
-    }
+    html.project-snap { scroll-snap-type: none; }
+    .snap-section { scroll-snap-align: none; height: auto; }
+    .project-header.snap-section { min-height: 100vh; }
+    .project-media { height: auto; width: 100%; }
+    .project-gallery-stack { gap: 10px; }
 
-    .project-media {
-        height: auto;
-        width: 100%;
-    }
-
-    .project-gallery-stack {
-        gap: 10px; /* Exact pixel gap on mobile */
-    }
-
-    /* Explore More Mobile overrides */
     .explore-grid {
-        grid-template-columns: repeat(2, 1fr); /* Forces exactly 2 cards on mobile */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 15px;
     }
     .explore-title {
-        font-size: 1.4rem; /* Scaled down for mobile */
+        font-size: 1.4rem; 
         margin-bottom: 20px;
     }
     .explore-more {
@@ -999,12 +997,4 @@ body.project-page.loaded {
 /* Hide the old logo if it still exists in your CSS */
 .top-logo {
     display: none;
-}
-
-/* Mobile Tweaks for Top Branding */
-@media (max-width: 900px) {
-    .top-branding {
-        top: 70px;
-        left: 20px;
-    }
 }
