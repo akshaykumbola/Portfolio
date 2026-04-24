@@ -455,247 +455,68 @@ html.fast-load.page-ready body {
 }
 
 /* =========================================
-   15. MOBILE RESPONSIVE (DESKTOP SAFEGUARDED)
+   15. TOP BRANDING HEADER
    ========================================= */
-@media (max-width: 900px) {
-    
-    * {
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    /* Top Branding Adjustments */
-    .top-logo {
-        width: 32px; 
-        left: 5%;    
-        top: 35px;
-    }
+.top-branding {
+    position: absolute; 
+    top: 30px;
+    left: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.8s ease;
+}
 
-    .top-branding {
-        top: 70px;
-        left: 20px;
-    }
+.top-branding.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
 
-    /* Hero Section Fixes to Prevent Overlap */
-    .hero-section {
-        height: auto; 
-        min-height: 550px; 
-        padding-top: 130px; /* Forces content below the top branding */
-        padding-bottom: 80px; 
-        overflow: visible; 
-    }
-    
-    .carousel-track-container {
-        overflow: visible; 
-        width: 100%;
-        height: 100%;
-    }
-    
-    .hero-section .intro-grid { 
-        margin-top: 0; 
-        flex-direction: row; 
-        gap: 15px; 
-        text-align: left; 
-        padding: 0 5%;
-        align-items: flex-start; 
-    }
-    .intro-image-wrapper { 
-        justify-content: flex-end; 
-        flex: 1;
-        align-items: flex-start; 
-    }
-    .character-img { 
-        height: auto; 
-        max-height: 180px; /* Reduced to leave room for content */
-        width: 100%;
-        object-fit: contain;
-        object-position: top; 
-    } 
-    .intro-text-wrapper { 
-        flex: 1.5;
-        text-align: left; 
-    }
-    
-    .handwritten-title { 
-        font-size: 1.3rem; 
-        margin-top: 0; 
-        margin-bottom: 5px; 
-        line-height: 1; 
-    } 
-    .handwritten-body { font-size: 0.85rem; line-height: 1.4; margin-bottom: 5px; } 
-    .handwritten-signature { font-size: 0.75rem; margin-top: 10px; padding-top: 10px;} 
-    
-    .rating-row { justify-content: flex-start; gap: 10px; }
-    .star-rating { font-size: 1.2rem; }
-    .brand-name { width: 50px; font-size: 0.9rem; }
-    
-    .carousel-nav { 
-        bottom: -20px; 
-        gap: 10px; 
-    }
-    .carousel-indicator { 
-        width: 6px !important; 
-        height: 6px !important; 
-        min-width: 6px !important;
-        min-height: 6px !important;
-        border-radius: 50% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-        box-sizing: border-box !important;
-    }
+.top-logo-img {
+    width: 35px;
+    height: auto;
+}
 
-    /* Software Grid Mobile Fix (Forces 2 Columns) */
-    .software-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        width: 100%;
-        max-width: 100%;
-    }
-    .software-item {
-        padding: 6px 10px;
-        justify-content: flex-start;
-    }
-    .software-item img {
-        width: 18px;
-        height: 18px;
-    }
-    .software-item span {
-        font-size: 0.8rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.branding-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    /* General Layout */
-    .portfolio-layout { 
-        flex-direction: column; 
-        gap: 20px; 
-    }
-    
-    #portfolio-section {
-        padding: 0 0 100px 0; 
-    }
+.branding-name {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
 
-    .portfolio-sidebar { 
-        position: sticky; 
-        top: 0; 
-        width: 100%;
-        background-color: #111; 
-        padding: 10px 5% 0 5%; 
-        box-sizing: border-box;
-        z-index: 30;
-        align-self: auto;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    /* Menu Cutoff Fix (Horizontal Scroll) */
-    .portfolio-list { 
-        flex-direction: row; 
-        flex-wrap: nowrap; 
-        justify-content: flex-start; /* Fixes cutoff */
-        gap: 25px; 
-        padding: 0 0 10px 0; 
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    .portfolio-list::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .portfolio-item { 
-        padding: 5px 0; 
-        border: none !important; 
-        flex: 0 0 auto;
-        position: relative;
-    }
-    .portfolio-item:last-child {
-        padding-right: 20px; /* Safe space to prevent last item clipping */
-    }
-    
-    .name-wrapper { 
-        height: 1.2rem; 
-        line-height: 1.2rem; 
-        overflow: hidden; 
-    }
-    
-    .portfolio-name { 
-        font-size: 0.8rem; 
-        opacity: 0.4;
-        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
-        white-space: nowrap; 
-    }
-    
-    .portfolio-item:hover .portfolio-name { transform: none !important; }
-    
-    .portfolio-item.active .portfolio-name { 
-        opacity: 1;
-        transform: translateY(-1.2rem) !important; 
-    }
-    
-    .portfolio-item.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #ffffff;
-    }
+.branding-phone {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: #888888;
+    text-decoration: none;
+    margin-top: 2px;
+    transition: color 0.3s ease;
+}
 
-    .portfolio-list:hover .portfolio-item:not(:hover) .portfolio-name {
-        opacity: 0.4 !important; 
-    }
-    .portfolio-list.category-selected .portfolio-item:not(.active) .portfolio-name {
-        opacity: 0.4; 
-    }
-    
-    /* Grids & Cards */
-    .portfolio-gallery {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px 5% 0 5%;
-    }
+.branding-phone:hover {
+    color: #ffffff;
+}
 
-    .works-grid { 
-        grid-template-columns: repeat(2, calc(50% - 7.5px)); 
-        gap: 15px; 
-        width: 100%;
-        align-items: start; 
-        align-content: start;
-    }
-    
-    .work-thumb { border-radius: 6px; }
-    .work-title { font-size: 0.9rem; }
-
-    .socials-divider {
-        margin-top: 45px; 
-        margin-bottom: 10px; 
-    }
-    .carousel-arrow { 
-        font-size: 1.8rem; 
-        padding: 5px; 
-        background: transparent; 
-    }
-    .carousel-arrow.prev { left: 5px; }
-    .carousel-arrow.next { right: 5px; }
-
-    .ticker-wrap { height: 34px; }
-    .ticker span { font-size: 16px; }
-
-    #logo-base, #logo-text { width: 140vw; max-width: none; }
-    #progress-container { width: 34vw; top: 50.75%; }
-    #progress-line { height: 1px; }
-    #progress-text { font-size: 6px; top: -6px; }
+.top-logo {
+    display: none;
 }
 
 /* =========================================
    16. FULL-SCREEN SNAP PROJECT PAGES
    ========================================= */
-
-/* Enables Magnetic Scroll Snapping on the whole page */
 html.project-snap {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
@@ -718,7 +539,6 @@ body.project-page.loaded {
     opacity: 1; 
 }
 
-/* Back Button Nav */
 .project-nav {
     position: fixed;
     top: 0;
@@ -731,7 +551,6 @@ body.project-page.loaded {
     display: block; 
 }
 
-/* Arrow-Only Circular Button */
 .back-btn {
     display: inline-flex;
     align-items: center;
@@ -755,15 +574,13 @@ body.project-page.loaded {
     transform: translateX(-5px); 
 }
 
-/* The Magnetic Snap Sections */
 .snap-section {
     width: 100vw;
-    height: 100vh; /* Desktop: Forces exactly 1 screen tall */
+    height: 100vh; 
     scroll-snap-align: start; 
     scroll-snap-stop: always; 
 }
 
-/* Page 1: Text Header */
 .project-header {
     display: flex;
     flex-direction: column;
@@ -798,24 +615,22 @@ body.project-page.loaded {
     margin: 0 auto;
 }
 
-/* Page 2+: Media Gallery */
 .project-gallery-stack {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Desktop gap between images */
+    gap: 10px; 
     width: 100vw;
     background-color: transparent; 
 }
 
 .project-media {
     width: 100vw;
-    height: 100vh; /* Desktop: Forces image to fill the 100vh container */
+    height: 100vh; 
     object-fit: contain; 
     display: block;
     background-color: transparent; 
 }
 
-/* Loading Indicator */
 .loading-pulse {
     display: flex;
     justify-content: center;
@@ -841,13 +656,12 @@ body.project-page.loaded {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Keeps the grid centered on ultra-wide screens */
+    align-items: center; 
     background-color: #050505;
     padding: 80px 5%;
     box-sizing: border-box;
 }
 
-/* Left-aligned & scaled down title */
 .explore-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem; 
@@ -855,7 +669,7 @@ body.project-page.loaded {
     margin: 0 0 30px 0;
     text-align: left; 
     width: 100%;
-    max-width: 1200px; /* Aligns perfectly with the left edge of the grid */
+    max-width: 1200px; 
 }
 
 .explore-grid {
@@ -910,8 +724,241 @@ body.project-page.loaded {
     letter-spacing: 1px;
 }
 
-/* Explore More Mobile overrides */
+/* =========================================
+   18. MOBILE RESPONSIVE (DESKTOP SAFEGUARDED)
+   ========================================= */
 @media (max-width: 900px) {
+    
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Top Branding Fixes */
+    .top-logo {
+        width: 32px; 
+        left: 5%;    
+        top: 35px;
+    }
+
+    .top-branding {
+        top: 70px;
+        left: 20px;
+    }
+
+    /* Hero Section Fixes to Prevent Overlap and REMOVE DEAD SPACE */
+    .hero-section {
+        height: auto; 
+        min-height: 420px; /* Drastically reduced to kill dead space */
+        padding-top: 110px; /* Snug under the branding */
+        padding-bottom: 30px; /* Reduced from 80px to pull menu up */
+        overflow: visible; 
+    }
+    
+    .carousel-track-container {
+        overflow: visible; 
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-section .intro-grid { 
+        margin-top: 0; 
+        flex-direction: row; 
+        gap: 15px; 
+        text-align: left; 
+        padding: 0 5%;
+        align-items: flex-start; 
+    }
+    .intro-image-wrapper { 
+        justify-content: flex-end; 
+        flex: 1;
+        align-items: flex-start; 
+    }
+    .character-img { 
+        height: auto; 
+        max-height: 180px; 
+        width: 100%;
+        object-fit: contain;
+        object-position: top; 
+    } 
+    .intro-text-wrapper { 
+        flex: 1.5;
+        text-align: left; 
+    }
+    
+    .handwritten-title { 
+        font-size: 1.3rem; 
+        margin-top: 0; 
+        margin-bottom: 5px; 
+        line-height: 1; 
+    } 
+    .handwritten-body { font-size: 0.85rem; line-height: 1.4; margin-bottom: 5px; } 
+    .handwritten-signature { font-size: 0.75rem; margin-top: 10px; padding-top: 10px;} 
+    
+    .rating-row { justify-content: flex-start; gap: 10px; }
+    .star-rating { font-size: 1.2rem; }
+    .brand-name { width: 50px; font-size: 0.9rem; }
+    
+    .carousel-nav { 
+        bottom: 0px; /* Pulled up closer to the text */
+        gap: 10px; 
+    }
+    .carousel-indicator { 
+        width: 6px !important; 
+        height: 6px !important; 
+        min-width: 6px !important;
+        min-height: 6px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Software Grid Mobile Fix (Forces 2 Columns) */
+    .software-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .software-item {
+        padding: 6px 10px;
+        justify-content: flex-start;
+    }
+    .software-item img {
+        width: 18px;
+        height: 18px;
+    }
+    .software-item span {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* General Layout */
+    .portfolio-layout { 
+        flex-direction: column; 
+        gap: 20px; 
+    }
+    
+    #portfolio-section {
+        padding: 0 0 100px 0; 
+    }
+
+    .portfolio-sidebar { 
+        position: sticky; 
+        top: 0; 
+        width: 100%;
+        background-color: #111; 
+        padding: 5px 5% 0 5%; /* Tightened top padding */
+        box-sizing: border-box;
+        z-index: 30;
+        align-self: auto;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Menu Fit Fix (Wrapping instead of scrolling) */
+    .portfolio-list { 
+        flex-direction: row; 
+        flex-wrap: wrap; /* Allows items to form a 2x2 grid or wrap nicely */
+        justify-content: center; /* Centers them */
+        gap: 10px 20px; /* Vertical and Horizontal spacing */
+        padding: 0 0 10px 0; 
+        width: 100%;
+        overflow-x: visible; /* Removes the scrollbar requirement */
+    }
+    .portfolio-list::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .portfolio-item { 
+        padding: 5px 0; 
+        border: none !important; 
+        flex: 0 0 auto;
+        position: relative;
+    }
+    .portfolio-item:last-child {
+        padding-right: 0; /* Remove the safe space padding used for scrolling */
+    }
+    
+    .name-wrapper { 
+        height: 1.2rem; 
+        line-height: 1.2rem; 
+        overflow: hidden; 
+    }
+    
+    .portfolio-name { 
+        font-size: 0.75rem; /* Slightly smaller to fit well */
+        opacity: 0.4;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+        white-space: normal; 
+    }
+    
+    .portfolio-item:hover .portfolio-name { transform: none !important; }
+    
+    .portfolio-item.active .portfolio-name { 
+        opacity: 1;
+        transform: translateY(-1.2rem) !important; 
+    }
+    
+    .portfolio-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+    }
+
+    .portfolio-list:hover .portfolio-item:not(:hover) .portfolio-name {
+        opacity: 0.4 !important; 
+    }
+    .portfolio-list.category-selected .portfolio-item:not(.active) .portfolio-name {
+        opacity: 0.4; 
+    }
+    
+    /* Grids & Cards */
+    .portfolio-gallery {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 5% 0 5%;
+    }
+
+    .works-grid { 
+        grid-template-columns: repeat(2, calc(50% - 7.5px)); 
+        gap: 15px; 
+        width: 100%;
+        align-items: start; 
+        align-content: start;
+    }
+    
+    .work-thumb { border-radius: 6px; }
+    .work-title { font-size: 0.9rem; }
+
+    .socials-divider {
+        margin-top: 20px; /* Reduced from 45px to tighten layout */
+        margin-bottom: 5px; 
+    }
+    .carousel-arrow { 
+        font-size: 1.8rem; 
+        padding: 5px; 
+        background: transparent; 
+    }
+    .carousel-arrow.prev { left: 5px; }
+    .carousel-arrow.next { right: 5px; }
+
+    .ticker-wrap { height: 34px; }
+    .ticker span { font-size: 16px; }
+
+    #logo-base, #logo-text { width: 140vw; max-width: none; }
+    #progress-container { width: 34vw; top: 50.75%; }
+    #progress-line { height: 1px; }
+    #progress-text { font-size: 6px; top: -6px; }
+
+    /* Inner Pages Mobile Overrides */
     .project-nav { padding: 20px 5%; }
     .project-title { font-size: 2.5rem; }
     .project-description { font-size: 0.95rem; text-align: left; }
@@ -935,66 +982,4 @@ body.project-page.loaded {
     .explore-more {
         padding: 60px 5%; 
     }
-}
-
-/* =========================================
-   18. TOP BRANDING HEADER
-   ========================================= */
-.top-branding {
-    position: absolute; 
-    top: 30px;
-    left: 30px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    opacity: 0; /* Hidden during animation */
-    pointer-events: none; /* Prevents clicking when hidden */
-    transition: opacity 0.8s ease;
-}
-
-/* This class gets added by JS when animation is done */
-.top-branding.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.top-logo-img {
-    width: 35px;
-    height: auto;
-}
-
-.branding-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.branding-name {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 1.2;
-}
-
-.branding-phone {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    color: #888888;
-    text-decoration: none;
-    margin-top: 2px;
-    transition: color 0.3s ease;
-}
-
-.branding-phone:hover {
-    color: #ffffff;
-}
-
-/* Hide the old logo if it still exists in your CSS */
-.top-logo {
-    display: none;
 }
