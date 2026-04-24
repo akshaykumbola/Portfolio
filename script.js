@@ -585,9 +585,8 @@ initCarousel();
 initPortfolioGallery();
 
 if (!checkSessionMemory()) {
-    preloadImages();
     window.scrollTo(0, 0); 
-    requestAnimationFrame(startLoadingAnimation);
+    preloadImages(); 
     
     if (window.innerWidth <= 900) {
         setTimeout(() => {
